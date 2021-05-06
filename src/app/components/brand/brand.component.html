@@ -1,0 +1,33 @@
+<!-- <div class="collapse show" id="brand-collapse">
+  <div class="card-header"><label for="filterText" class="form-label">Model Ara</label>
+    <input
+     type="text"
+     class="form-control"
+     id="filterText"
+     placeholder="Arama ifadesi giriniz.."
+     [(ngModel)]="filterText"
+    />
+  </div>
+  
+<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+      <li *ngFor="let brand of brands | brandPipe:filterText"> 
+        <a routerLink="/cars/brand/{{brand.brandId}}" class="link-dark rounded">{{brand.brandName}}</a></li>
+  </ul>
+</div> -->
+
+
+
+<div class="collapse show" id="brand-collapse">
+  <div id="header" class="card-header">
+    <input
+     type="text"
+     class="form-control"
+     id="brandFilterText"
+     placeholder="Search a brand"
+     [(ngModel)]="filterText"
+    />
+  </div>
+<ul class="btn-toggle-nav list-unstyled fw-normal pb-2 ">
+      <li id="text1" *ngFor="let brand of brands | brandPipe:filterText"> <a routerLink="/cars/brand/{{brand.brandId}}" class="link-dark rounded">{{brand.brandName}}</a></li>
+  </ul>
+</div> 

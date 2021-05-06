@@ -1,0 +1,36 @@
+  
+<tr *ngIf="car" >
+    <div id="place" *ngFor="let carImage of carImages" class="card" style="width: 960px; ">
+      <img src="{{defaultPath}}{{carImage.imagePath}}" class="card-img-top" alt="...">
+      <div class="card-body" >
+          <div class="card-body">
+            <div class="row">
+                <div id="brand" class="col-sm-3">
+                    <h4 class="card-title " style="text-align: center;">Brand</h4>
+                    <p class="card-text"  style="text-align: center;" >{{car.brandName}} </p>
+                </div>
+                <div class="col-sm-2">
+                    <h4 class="card-title" style="text-align: center;">Name</h4>
+                    <p class="card-text"  style="text-align: center;" > {{car.carName}}</p>
+                </div>
+                <div class="col-sm-2">
+                  <h4 class="card-title" style="text-align: center;">Model</h4>
+                  <p class="card-text"  style="text-align: center;" > {{car.modelYear}}</p>
+              </div>
+                <div class="col-sm-2">
+                    <h4 class="card-title" style="text-align: center;">Color</h4>
+                    <p class="card-text"  style="text-align: center;" > {{car.colorName}}</p>
+                </div>
+                
+                <div class="col-sm-3">
+                    <h4 class="card-title " style="text-align: center;">Daily Price</h4>
+                    <p class="card-text"  style="text-align: center;" >{{car.dailyPrice |currency:"₺"}} </p>
+                </div>             
+            </div>
+      </div>
+    </div>
+    <div class="d-grid gap-2">
+        <button class="btn btn-success" type="button">Rent</button>
+    </div>
+    </div>
+    </tr>
