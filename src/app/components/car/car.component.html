@@ -1,16 +1,44 @@
-<div
-  *ngIf="dataLoaded == false"
-  class="spinner-border text-primary"
-  role="status"
->
-  <span class="visually-hidden">Loading...</span>
-</div>
+
+
 <div class="row">
 
   <div class="mb-3">
     <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
      placeholder="Rent a car">
   </div>
+  <div class="row">
+    <div class="col-md-4">
+      <select [(ngModel)]="filterBrandId" class="form-select" aria-placeholder="Brands">
+        <option value=0>Brands</option>
+        <option *ngFor="let brand of brands" [value]="brand.brandId" [selected]="getSelectedBrand(brand.brandId)">
+          {{brand.brandName}}</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select [(ngModel)]="filterColorId" class="form-select" aria-label="Colors">
+        <option value=0>Colors</option>
+        <option *ngFor="let color of colors" [value]="color.colorId" [selected]="getSelectedColor(color.colorId)">
+          {{color.colorName}}</option>
+      </select>
+    </div>
+    
+      <button id="filt1" routerLink="/cars/brand/{{filterBrandId}}/color/{{filterColorId}}"
+       type="button"
+        class="btn btn-danger">
+        Filter
+      </button>
+      <button id="filt2" routerLink="/cars" type="button" class="btn btn-dark">Clear</button>
+      <p></p>
+   
+  </div>
+  <div id ="spin"
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-primary"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>
+
   
   <div *ngFor="let car of cars | filterPipe:filterText" class="col-lg-4 col-md-5" >
     <div  class="card border-0 mb-1" style="width: 18rem">

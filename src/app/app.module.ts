@@ -20,6 +20,7 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe'
 import{ToastrModule} from "ngx-toastr"
 import { ColorPipePipe } from './pipes/color-pipe.pipe';
 import { BrandPipePipe } from './pipes/brand-pipe.pipe';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 
 
 
@@ -33,6 +34,7 @@ import { BrandPipePipe } from './pipes/brand-pipe.pipe';
     ColorComponent,
     CustomerComponent,
     CarDetailComponent,
+    CartSummaryComponent,
     VatAddedPipe,
     FilterPipePipe,
     ColorPipePipe,

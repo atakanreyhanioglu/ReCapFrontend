@@ -1,0 +1,134 @@
+#cont{
+    margin-top:-45px;
+
+}
+.container-fluid {
+    background-color: #ffffff;
+    margin-top:0px;
+    
+}
+
+.heading {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding-left: 20px
+}
+
+.card {
+    border-radius: 10px !important;
+    margin-top: 60px;
+    margin-bottom: 60px
+}
+
+.form-card {
+    margin-left: 20px;
+    margin-right: 20px
+}
+
+.form-card input,
+.form-card textarea {
+    padding: 10px 15px 5px 15px;
+    border: none;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: arial;
+    color: #28a745;
+    font-size: 14px;
+    letter-spacing: 1px
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+    -moz-box-shadow: 0px 0px 0px 1.5px 28a745 !important;
+    -webkit-box-shadow: 0px 0px 0px 1.5px 28a745 !important;
+    box-shadow: 0px 0px 0px 1.5px 28a745 !important;
+    font-weight: bold;
+    border: 1px solid #28a745;
+    outline-width: 0
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    overflow: hidden
+}
+
+.input-group input {
+    position: relative;
+    height: 80px;
+    margin-left: 1px;
+    margin-right: 1px;
+    border-radius: 6px;
+    padding-top: 30px;
+    padding-left: 25px
+}
+
+.input-group label {
+    position: absolute;
+    height: 24px;
+    background: none;
+    border-radius: 6px;
+    line-height: 48px;
+    font-size: 15px;
+    color: gray;
+    width: 100%;
+    font-weight: 100;
+    padding-left: 25px
+}
+
+input:focus+label {
+    color: #28a745
+}
+
+.btn-pay {
+    background-color: #28a745;
+    height: 60px;
+    color: #ffffff !important;
+    font-weight: bold
+}
+
+.btn-pay:hover {
+    background-color: #22d84d
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover
+}
+
+img {
+    border-radius: 5px
+}
+
+.radio-group {
+    position: relative;
+    margin-bottom: 25px
+}
+
+.radio {
+    display: inline-block;
+    border-radius: 6px;
+    box-sizing: border-box;
+    border: 2px solid lightgrey;
+    cursor: pointer;
+    margin: 12px 25px 12px 0px
+}
+
+.radio:hover {
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2)
+}
+
+.radio.selected {
+    box-shadow: 0px 0px 0px 1px rgba(187, 255, 156, 0.4);
+    border: 2px solid #28a745
+}
+
+.label-radio {
+    font-weight: bold;
+    color: #000000
+}

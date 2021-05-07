@@ -6,11 +6,13 @@ import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
 import { Color } from 'src/app/models/color';
+import { Rental } from 'src/app/models/rental';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ColorService } from 'src/app/services/color.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-car',
@@ -19,6 +21,7 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class CarComponent implements OnInit {
   defaultPath = 'https://localhost:44334';
+  rentals:Rental[]=[];
   cars: Car[] = [];
   brands:Brand[]=[];
   colors:Color[]=[];
@@ -33,6 +36,7 @@ export class CarComponent implements OnInit {
     private brandService:BrandService,
     private carImageService: CarImageService,
     private toastrService: ToastrService,
+    private rentalService:RentalService,
     private cartService: CartService,
     private activedRoute: ActivatedRoute
   ) {}
@@ -40,9 +44,10 @@ export class CarComponent implements OnInit {
   ngOnInit(): void {
     this.getAllBrands();
     this.getAllColors();
+    this.getRentals();
     this.activedRoute.params.subscribe((params) => {
-      if(params['colorId'] && params['brandId']){
-        this.getCarDetailByColorAndBrand(params['colorId'],params['brandId']);
+      if(params['brandId'] && params['colorId']){
+        this.getCarDetailByColorAndBrand(params['brandId'],params['colorId']);
       }
       else if (params['brandId']) {
         this.getCarsByBrandId(params['brandId']);
@@ -58,19 +63,24 @@ export class CarComponent implements OnInit {
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
       this.dataLoaded = true;
-      console.log(this.cars);
     });
+  }
+  getRentals(){
+    this.rentalService.getRentals().subscribe((response) => {
+      this.rentals=response.data;
+      console.log(this.rentals)
+    })
   }
   getAllBrands() {
     this.brandService.getBrands().subscribe((response) => {
       this.brands = response.data;
-      console.log(this.brands);
+     
     });
   }
   getAllColors() {
     this.colorService.getColors().subscribe((response) => {
       this.colors = response.data;
-      console.log(this.colors);
+      
     });
   }
 
@@ -91,12 +101,42 @@ export class CarComponent implements OnInit {
     .subscribe((response) => {
       console.log(response)
       this.cars = response.data;
+      this.dataLoaded = true;
     });
+  }
+  getSelectedBrand(brandId:number){
+    if(this.filterBrandId==brandId){
+      return true ;
+    }
+    else{
+      return false;
+    }
+
+  }
+  getSelectedColor(colorId:number){
+    if(this.filterColorId==colorId){
+      return true ;
+    }
+    else{
+      return false;
+    }
+
   }
 
   addToCart(car: Car) {
-    this.toastrService.success('Added to car', car.carName);
-    this.cartService.addToCart(car);
+    let item = this.rentals.find(c=>c.carId===car.carId);
+    if(item && item.returnDate==null){
+      this.toastrService.error('Already Rented', car.carName);
+      return;
+    }else{
+      this.toastrService.success('Added to cart', car.carName);
+      this.cartService.addToCart(car);
+      console.log(car)
+      return;
+    }
+    
   }
   
+  
+
 }

@@ -8,13 +8,18 @@
     
 }
 #Login{
-   
-    margin-left: 200px;
-    
+    float: right;
 }
 #Home{
     margin-left: 130px;
 }
 #nav{
     color: white;
+}
+#cartlogo{
+    margin-bottom: 5px;
+}
+#cart{
+    margin-left: 100px;
+    width: 300px;
 }
