@@ -21,6 +21,7 @@ import{ToastrModule} from "ngx-toastr"
 import { ColorPipePipe } from './pipes/color-pipe.pipe';
 import { BrandPipePipe } from './pipes/brand-pipe.pipe';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
 
 
 
@@ -38,7 +39,8 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
     VatAddedPipe,
     FilterPipePipe,
     ColorPipePipe,
-    BrandPipePipe
+    BrandPipePipe,
+    BrandAddComponent
     
     
 

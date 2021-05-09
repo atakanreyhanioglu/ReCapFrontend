@@ -13,13 +13,13 @@
               <b>Home</b></button> 
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" >Brands</a>
+            <a class="nav-link" routerLink="/cars/add/brand" >AddEntity</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" >Colors</a>
+            <a class="nav-link" routerLink="/cars" >Cars</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" >Rentals</a>
+          <li class="nav-item"> 
+            <a class="nav-link" routerLink="/cars" >Rentals</a>
           </li>
           <li>
             <button *ngIf="cartItems[0]" routerLink="cars/payment" id="cart" type="button" class="btn btn-success ">

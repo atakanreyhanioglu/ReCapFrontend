@@ -1,0 +1,29 @@
+#colorbtn{
+     width: 100px;
+     margin-left: 40px;
+}
+#brandbtn{
+    width: 100px;
+    height:40px;
+    
+}
+#drop{
+    width: 240px;
+}
+#colorName{
+    width: fit-content;
+}
+#brandName{
+    width: fit-content;
+}
+#col1{
+    width: 800px;
+}
+#add{
+    margin-left: 150px; 
+    width: 400px;
+ }
+ #cont{
+     margin-left: 60px;
+     margin-top: 5px;
+ }
