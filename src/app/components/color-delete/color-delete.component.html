@@ -1,0 +1,34 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">DeleteColor</h5>
+            </div>
+            <div class="card-body">
+                
+                <table class="table container">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Color</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="color">
+                            <td>{{color.colorId}}</td>
+                            <td>{{color.colorName}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-dark" (click)="backToList()">BackToList</button>
+                <button class="btn btn-fill btn-danger" style="float: right;" (click)="delete()">Delete</button>
+                
+            </div>
+        </div>
+
+    </div>
+
+</div>

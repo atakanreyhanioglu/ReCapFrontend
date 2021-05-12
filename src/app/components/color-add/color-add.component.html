@@ -2,21 +2,21 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="title">AddBrand</h5>
+                <h5 class="title">AddColor</h5>
             </div>
             <div class="card-body">
-                <form [formGroup]="brandAddForm">
+                <form [formGroup]="colorAddForm">
                     <div class="mb-3">
-                        <label for="brandName">Brands</label>
+                        <label for="colorName">Colors</label>
                         <div class="form-group">
-                            <input type="text" id="brandName" formControlName="brandName" class="form-control" placeholder="Brand Name" />
+                            <input type="text" id="colorName" formControlName="colorName" class="form-control" placeholder="Color Name" />
                         </div>
                     </div>
                 </form>
             </div>
             <div class="card-footer">
                 <button class="btn btn-fill btn-dark" (click)="backToList()">BackToList</button>
-                <button class="btn btn-fill btn-success" (click)="add()" style="float: right;">AddBrand</button>
+                <button class="btn btn-fill btn-success" (click)="add()" style="float: right;">AddColor</button>
             </div>
         </div>
 

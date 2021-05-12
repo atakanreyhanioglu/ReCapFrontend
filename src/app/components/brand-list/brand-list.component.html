@@ -1,0 +1,32 @@
+<div class="container" style="width: 500px;">
+    <table class="table ">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Brands</th>
+                <th></th>
+             
+    
+                <th><button  class="btn btn-success" click="routerLink" routerLink="add" style="width: 154px;">AddBrand</button></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let brand of brands">
+                <td>{{brand.brandId}}</td>
+                <td>{{brand.brandName}}</td>
+                <td></td>
+              
+    
+               
+    
+             
+    
+                <td>
+                    <button class="btn btn-danger" click="routerLink" routerLink="update/{{brand.brandId}}">Update</button>
+                    <button class="btn btn-dark mx-2" click="routerLink" routerLink="delete/{{brand.brandId}}">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    
+    </table>
+    </div>

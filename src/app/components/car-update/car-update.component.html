@@ -1,0 +1,72 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">UpdateCar</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="carUpdateForm">
+                    
+                    <div class="mb-3">
+                        <label for="description">Car Name</label>
+                        <div class="form-group">
+                            <input type="text" id="carName" formControlName="description" class="form-control" placeholder="Car Name" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id">CarId</label>
+                        <div class="form-group">
+                            <select type="number" id="id" class="form-select" aria-label="id" formControlName="id">
+                        
+                                <option *ngIf="car" [ngValue]="car.id">{{car.id}}</option>
+                              </select>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="brandId">Brand</label>
+                        <div class="form-group">
+                            <select type="number" id="brandId" class="form-select" aria-label="Brand Select" formControlName="brandId">
+                                <option value="" disabled selected>Brands</option>
+                                <option *ngFor="let brand of brands" [ngValue]="brand.brandId">{{brand.brandName}}</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="colorId">Color</label>
+                        <div class="form-group">
+                            <select type="number" id="colorId" class="form-select" aria-label="Color select" formControlName="colorId">
+                                <option value="" disabled selected>Colors</option>
+                                <option *ngFor="let color of colors" [ngValue]="color.colorId">{{color.colorName}}</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="modelYear">Model Year</label>
+                        <div class="form-group">
+                            <input type="text" id="modelYear" formControlName="modelYear" class="form-control" placeholder="Model Year" />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dailyPrice">Daily Price</label>
+                        <div class="form-group">
+                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Daily Price" />
+                        </div>
+                    </div>
+                   
+                   
+                   
+                    
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-dark" (click)="backToList()">BackToList</button>
+                <button class="btn btn-fill btn-success" (click)="update()" style="float: right;">Update</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

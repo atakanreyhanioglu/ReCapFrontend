@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { CarComponent } from "./components/car/car.component";
-import { RentalComponent } from "./components/rental/rental.component"
 import {BrandComponent } from "./components/brand/brand.component"
 import {ColorComponent } from "./components/color/color.component"
 import {CustomerComponent } from "./components/customer/customer.component";
@@ -21,7 +20,19 @@ import{ToastrModule} from "ngx-toastr"
 import { ColorPipePipe } from './pipes/color-pipe.pipe';
 import { BrandPipePipe } from './pipes/brand-pipe.pipe';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { ColorListComponent } from './components/color-list/color-list.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
+import { BrandListComponent } from './components/brand-list/brand-list.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { BrandDeleteComponent } from './components/brand-delete/brand-delete.component';
+import { CarListComponent } from './components/car-list/car-list.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { CarDeleteComponent } from './components/car-delete/car-delete.component';
+
 
 
 
@@ -29,7 +40,6 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
   declarations: [
     AppComponent,
     CarComponent,
-    RentalComponent,
     NaviComponent,
     BrandComponent,
     ColorComponent,
@@ -40,7 +50,20 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
     FilterPipePipe,
     ColorPipePipe,
     BrandPipePipe,
-    BrandAddComponent
+    
+    ColorAddComponent,
+    ColorListComponent,
+    ColorUpdateComponent,
+    ColorDeleteComponent,
+    BrandListComponent,
+    BrandAddComponent,
+    BrandUpdateComponent,
+    BrandDeleteComponent,
+    CarListComponent,
+    CarAddComponent,
+    CarUpdateComponent,
+    CarDeleteComponent,
+ 
     
     
 

@@ -1,0 +1,32 @@
+<div class="container" style="width: 400px;">
+<table class="table ">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Colors</th>
+            <th></th>
+         
+
+            <th><button  class="btn btn-success" click="routerLink" routerLink="add" style="width: 152px;">AddColor</button></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let color of colors">
+            <td>{{color.colorId}}</td>
+            <td>{{color.colorName}}</td>
+            <td></td>
+          
+
+           
+
+         
+
+            <td>
+                <button class="btn btn-danger" click="routerLink" routerLink="update/{{color.colorId}}">Update</button>
+                <button class="btn btn-dark mx-2" click="routerLink" routerLink="delete/{{color.colorId}}">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+</div>
