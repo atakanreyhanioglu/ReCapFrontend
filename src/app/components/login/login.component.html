@@ -1,0 +1,44 @@
+<body class="text-center">
+  <main class="form-signin">
+    <form [formGroup]="loginForm">
+      <img
+        class="mb-4"
+        src="https://i.ibb.co/XVYRKg0/app-rentalapp-rental-2.jpg"
+        alt=""
+        width="72"
+        height="74"
+      />
+     
+
+      <div class="form-floating">
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+        
+        />
+        <label for="floatingInput">Email</label>
+      </div>
+      <div class="form-floating">
+        <input
+        formControlName="password"
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+         
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      
+      <button class="w-100 btn btn-lg btn-danger" (click)="login()" routerLink="cars" >
+        Login
+      </button>
+      <p class="mt-5 mb-3 text-muted">ReCap &copy; 2021</p>
+    </form>
+
+  </main>
+</body>

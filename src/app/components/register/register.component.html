@@ -1,0 +1,62 @@
+<div class="container register-form">
+  <form [formGroup]="signInForm">
+    <div class="form">
+      <img
+        class="mb-4"
+        src="https://i.ibb.co/XVYRKg0/app-rentalapp-rental-2.jpg"
+        alt=""
+        width="132"
+        height="128"
+        style="margin-left: 395px"
+      />
+      <div class="form-content">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="firstName"
+                placeholder="Firstname *"
+                
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="lastName"
+                placeholder="Lastname *"
+            
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                formControlName="email"
+                placeholder="Email *"
+           
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                formControlName="password"
+                placeholder="Password *"
+          
+              />
+            </div>
+          </div>
+        </div>
+        <button type="button" (click)="signIn()" class="btnSubmit">
+          Register
+        </button>
+        <p class="mt-5 mb-3 text-muted">ReCap &copy; 2021</p>
+      </div>
+    </div>
+  </form>
+</div>

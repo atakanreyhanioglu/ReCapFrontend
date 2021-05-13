@@ -34,9 +34,21 @@
         </ul>
   
       
-        <button id="Login" type="button" class="btn "><b>Login</b></button>
-        <button id="SignIn" type="button" class="btn btn-warning ">SignIn</button>
-        
+        <button *ngIf="!isLogin" id="Login" routerLink="login" type="button" class="btn "><b>Login</b></button>
+        <button *ngIf="!isLogin" id="SignIn" routerLink="register" type="button" class="btn btn-warning ">SignIn</button>
+        <div class="btn-group">
+          <button *ngIf="isLogin" type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+           {{userName | uppercase}}
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="">Edit Profile</a></li>
+            <li><a class="dropdown-item" routerLink="brands/list">Edit Brands</a></li>
+            <li><a class="dropdown-item" routerLink="colors/list">Edit Colors</a></li>
+            <li><a class="dropdown-item" routerLink="cars/list">Edit Cars</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          </ul>
+        </div>
         
       </div>
     </div>

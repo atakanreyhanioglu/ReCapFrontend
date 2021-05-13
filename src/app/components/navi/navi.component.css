@@ -23,3 +23,16 @@
     margin-left: 100px;
     width: 300px;
 }
+a {
+    color: black;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+.dropdown-menu > li > a {
+    color: black; 
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: rgba(248, 206, 206, 0.89); 
+}

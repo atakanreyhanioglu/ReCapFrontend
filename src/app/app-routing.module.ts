@@ -15,6 +15,10 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorDeleteComponent } from './components/color-delete/color-delete.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AlreadyLoginGuard } from './guards/already-login.guard';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [{path:"",pathMatch:"full",component:CarComponent},
 {path:"cars",component:CarComponent},
@@ -36,9 +40,13 @@ const routes: Routes = [{path:"",pathMatch:"full",component:CarComponent},
 {path:"brands/list/delete/:brandId", component:BrandDeleteComponent},
 
 {path:"cars/list", component:CarListComponent},
-{path:"cars/list/add", component:CarAddComponent},
+{path:"cars/list/add", component:CarAddComponent, canActivate:[LoginGuard]},
 {path:"cars/list/update/:carId", component:CarUpdateComponent},
-{path:"cars/list/delete/:carId", component:CarDeleteComponent}
+{path:"cars/list/delete/:carId", component:CarDeleteComponent},
+
+{path:"login", component:LoginComponent,canActivate:[AlreadyLoginGuard]},
+{path:"register", component:RegisterComponent}
+
 
 
 
