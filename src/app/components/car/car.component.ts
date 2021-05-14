@@ -29,7 +29,7 @@ export class CarComponent implements OnInit {
   filterText = '';
   filterBrandId : number = 0;
   filterColorId :number = 0;
-
+  car:Car;
   constructor(
     private carService: CarService,
     private colorService:ColorService,

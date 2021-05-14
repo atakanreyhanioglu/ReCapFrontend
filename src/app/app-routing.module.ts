@@ -19,8 +19,12 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlreadyLoginGuard } from './guards/already-login.guard';
 import { LoginGuard } from './guards/login.guard';
+import { RentalComponent } from './rental/rental.component';
 
 const routes: Routes = [{path:"",pathMatch:"full",component:CarComponent},
+{path:"rentals", component:RentalComponent},
+
+
 {path:"cars",component:CarComponent},
 {path:"cars/brand/:brandId",component:CarComponent},
 {path:"cars/color/:colorId",component:CarComponent},
@@ -46,6 +50,7 @@ const routes: Routes = [{path:"",pathMatch:"full",component:CarComponent},
 
 {path:"login", component:LoginComponent,canActivate:[AlreadyLoginGuard]},
 {path:"register", component:RegisterComponent}
+
 
 
 

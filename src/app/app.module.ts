@@ -12,9 +12,12 @@ import {BrandComponent } from "./components/brand/brand.component"
 import {ColorComponent } from "./components/color/color.component"
 import {CustomerComponent } from "./components/customer/customer.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe'
+
 
 import{ToastrModule} from "ngx-toastr"
 import { ColorPipePipe } from './pipes/color-pipe.pipe';
@@ -35,6 +38,7 @@ import { CarDeleteComponent } from './components/car-delete/car-delete.component
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { RentalComponent } from './rental/rental.component';
 
 
 
@@ -68,6 +72,7 @@ import { RegisterComponent } from './components/register/register.component';
     CarDeleteComponent,
     LoginComponent,
     RegisterComponent,
+    RentalComponent,
  
     
     

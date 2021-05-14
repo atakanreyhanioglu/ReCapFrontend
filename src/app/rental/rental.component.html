@@ -1,0 +1,55 @@
+<div class="d-grid gap-2">
+  <button 
+    type="button"
+    [class]="buttonAvailable()"
+   
+  >
+    Rent
+  </button>
+  <div class="modal fade" id="rentalModal" tabindex="-1" aria-labelledby="rentalModalLabel" aria-hidden="true"  >
+    <div class="modal-dialog">
+
+      <!-- Giriş Yapmamışsa -->
+
+      <div class="modal-content" *ngIf="!isAuthenticated()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rentalModalLabel">Giriş Yapmanız Gerek</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <button [routerLink]="['login']" data-bs-dismiss="modal" class="btn btn-outline-dark">Go to login</button>
+        </div>
+      </div>
+
+
+
+      <!-- Giriş Yapmışsa -->
+      <div class="modal-content" *ngIf="isAuthenticated()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rentalModalLabel">Araç Kiralama</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="row">
+            <div class="form-group" style="margin-bottom: 15px;">
+              <label for="rentDate">Kiralama Tarihi</label>
+              
+              <p  class="text-danger"> mesaj </p>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;">
+              <label for="returnDate">Geri Dönüş Tarihi</label>
+            </div>
+           </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+        
+      <button type="button" class="btn btn-dark"  style="float:right">
+        Ödeme Yap
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
