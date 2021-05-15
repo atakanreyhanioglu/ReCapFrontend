@@ -1,0 +1,83 @@
+<div class="d-grid gap-2">
+    <button 
+      type="button"
+      [class]="buttonAvailable()"
+      (click)="open(mymodal)"
+    >
+      Rent
+    </button>
+</div>
+
+   
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"> Rent {{car.carName}} </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group row mb-2">
+        <label for="example-date-input" class="col-4 col-form-label"
+          >Daily Price</label
+        >
+        <div class="col-8">
+          <input
+            type="text"
+            disabled="disabled"
+            class="form-control"
+            [value]="car.dailyPrice | vatAdded:18 | currency"
+          />
+        </div>
+      </div>
+      
+      
+
+    <form>
+        <div class="row">
+
+        <div class="form-group " style="margin-bottom: 15px;">
+          <label for="rentDate">Rent Date</label>
+          <input [(ngModel)]="rentDate"  type="date" class="form-control" id="rentDate"  min="{{minDate}}" max='{{maxDate}}' name="rentDate" (input)='minDateChange($event)' >
+          <p *ngIf="message" class="text-danger"> {{message}} </p>
+        </div>
+        <div class="form-group" style="margin-bottom: 15px;">
+          <label for="returnDate">Return Date</label>
+          <input disabled="{{ !firstDateSelected }}" [(ngModel)]="returnDate" type="date" class="form-control" id="returnDate" name="returnDate" min='{{minDate}}' max='{{maxDate}}' (input)='totalAmount()'>
+        </div>
+       </div>
+      </form>
+      <div class="form-group row mb-2">
+        <label for="example-date-input" class="col-4 col-form-label"
+        >Total Price</label
+      >
+      <div class="col-8">
+        <input
+          type="text"
+          disabled="disabled"
+          class="form-control"
+          [value]="totalAmountCar | vatAdded:18 | currency"
+        />
+      </div>
+      </div>
+
+
+</div>
+  <div class="modal-footer">
+   
+    <button id="pay"  type="button" class="btn btn-dark" (click)="modal.close('Save click')">Close</button>
+    <button 
+    data-bs-dismiss="modal"
+    (click)="addToCart(car)"
+    (click)="modal.close('Save click')"
+    type="button"
+    class="btn btn-warning"
+  >
+    <b>Payment</b>
+  </button>
+  </div>
+</ng-template>
+
+  
+        

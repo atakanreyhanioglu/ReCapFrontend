@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { ToastrService } from 'ngx-toastr';
 import { CartItem } from 'src/app/models/cartItem';
 import { User } from 'src/app/models/user';
@@ -18,6 +19,8 @@ export class NaviComponent implements OnInit {
   users: User[]=[];
   userName : string;
   userLastname:string;
+  carId:number
+  checkIfCartFull:boolean =false
   constructor(private cartService:CartService,private userService:UserService,
     private localStorageService:LocalStorageService,private toastrService:ToastrService,
     private router:Router) { }
@@ -26,9 +29,21 @@ export class NaviComponent implements OnInit {
     this.getPaymentButton();
     this.checkIfLogin();
     this.getUsers();
+    this.checkCart();
    
     
   }
+  checkCart(){
+     this.carId =  parseInt(this.localStorageService.get('carIdCart'))
+        console.log(this.carId)
+        if(this.carId!=null){
+          return this.checkIfCartFull=true;
+           ;
+        }else{
+          return  this.checkIfCartFull=false;
+        }
+  }
+
   getUsers(){
    
       this.userService.getUsers().subscribe(response => {

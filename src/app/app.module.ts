@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe'
+import { DatePipe } from '@angular/common';
 
 
 import{ToastrModule} from "ngx-toastr"
@@ -38,7 +39,7 @@ import { CarDeleteComponent } from './components/car-delete/car-delete.component
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
-import { RentalComponent } from './rental/rental.component';
+import { RentalAddComponent } from './components/rental-add/rental-add.component';
 
 
 
@@ -57,6 +58,7 @@ import { RentalComponent } from './rental/rental.component';
     FilterPipePipe,
     ColorPipePipe,
     BrandPipePipe,
+   
     
     ColorAddComponent,
     ColorListComponent,
@@ -72,7 +74,7 @@ import { RentalComponent } from './rental/rental.component';
     CarDeleteComponent,
     LoginComponent,
     RegisterComponent,
-    RentalComponent,
+    RentalAddComponent,
  
     
     
@@ -91,8 +93,9 @@ import { RentalComponent } from './rental/rental.component';
     BrowserAnimationsModule
   ],
   providers: [
+    DatePipe,
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
-  
+    
   ],
   bootstrap: [AppComponent]
 })

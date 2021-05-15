@@ -19,10 +19,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlreadyLoginGuard } from './guards/already-login.guard';
 import { LoginGuard } from './guards/login.guard';
-import { RentalComponent } from './rental/rental.component';
 
 const routes: Routes = [{path:"",pathMatch:"full",component:CarComponent},
-{path:"rentals", component:RentalComponent},
 
 
 {path:"cars",component:CarComponent},

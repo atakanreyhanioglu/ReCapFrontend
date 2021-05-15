@@ -123,19 +123,7 @@ export class CarComponent implements OnInit {
 
   }
 
-  addToCart(car: Car) {
-    let item = this.rentals.find(c=>c.carId===car.carId);
-    if(item && item.returnDate==null){
-      this.toastrService.error('Already Rented', car.carName);
-      return;
-    }else{
-      this.toastrService.success('Added to cart', car.carName);
-      this.cartService.addToCart(car);
-      console.log(car)
-      return;
-    }
-    
-  }
+  
   
   
 
