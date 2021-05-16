@@ -20,8 +20,9 @@
     margin-bottom: 5px;
 }
 #cart{
-    margin-left: 450px;
+    float: right;
     width: 80px;
+    margin-right: 10px;
 }
 a {
     color: black;

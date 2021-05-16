@@ -1,77 +1,104 @@
-<!-- <body>
+<table class="table">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">Brand</th>
+      <th scope="col">Name</th>
+      <th scope="col">Color</th>
+      <th scope="col">Year</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Clear Cart</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="car">
+      <td>{{ car.brandName }}</td>
+      <td>{{ car.carName }}</td>
+      <td>{{ car.colorName }}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ totalPrice | vatAdded: 18 | currency }}</td>
+      <td>
+        <button
+          style="margin-top: -5px"
+          (click)="removeFromCart(car)"
+          class="btn btn-danger"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-    <div  class= "nav-item dropdown">
-        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Cart
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li *ngFor= "let cartItem of cartItems" ><a class="dropdown-item" >
-              {{cartItem.car.carName}}<button (click)="removeFromCart(cartItem.car)" class="btn btn-danger">Delete</button></a></li>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" >Check Cart</a>
+
+<div >
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-header">
+              <h5 class="title" style="align-self: center;">ReCap Payment</h5>
+          </div>
+          <div id="cont" class="row justify-content-center mb-1 radio-group">
+            <div class="col-sm-2 col-3">
+                <div class='radio  mx-2' data-value="dk"> <img class="fit-image" src="https://i.imgur.com/5TqiRQV.jpg" width="105px" height="55px"> </div>
+            </div>
+            <div class="col-sm-2 col-3">
+                <div class='radio mx-2' data-value="visa"> <img class="fit-image" src="https://i.imgur.com/OdxcctP.jpg" width="105px" height="55px"> </div>
+            </div>
+            <div class="col-sm-2 col-3">
+                <div class='radio mx-2' data-value="master"> <img class="fit-image" src="https://i.imgur.com/WIAP9Ku.jpg" width="105px" height="55px"> </div>
+            </div>
+            <div class="col-sm-2 col-3">
+                <div class='radio mx-2' data-value="paypal"> <img class="fit-image" src="https://i.imgur.com/cMk1MtK.jpg" width="105px" height="55px"> </div>
+            </div> <br>
         </div>
-    </div>
-    </body> -->
-    <div id="cont"class="container-fluid">
-      <div class="row justify-content-center">
-          <div class=" col-lg-8 col-md-8">
-              <div class="card p-3">
-                  <div class="row justify-content-center">
-                      <div class="col-12">
-                          <h4 class="heading text-center">ReCap Payment</h4>
+          <div class="card-body">
+              <form [formGroup]="paymentAddForm">
+                  <div class="mb-3">
+                      <label for="Name & Surname">Name & Surname</label>
+                      <div class="form-group">
+                          <input type="text" id="Name & Surname"  class="form-control" placeholder="Name & Surname" />
                       </div>
                   </div>
-                  <form onsubmit="event.preventDefault()" class="form-card">
-                      <div class="row justify-content-center mb-4 radio-group">
-                          <div class="col-sm-3 col-5">
-                              <div class='radio selected mx-auto' data-value="dk"> <img class="fit-image" src="https://i.imgur.com/5TqiRQV.jpg" width="105px" height="55px"> </div>
-                          </div>
-                          <div class="col-sm-3 col-5">
-                              <div class='radio mx-auto' data-value="visa"> <img class="fit-image" src="https://i.imgur.com/OdxcctP.jpg" width="105px" height="55px"> </div>
-                          </div>
-                          <div class="col-sm-3 col-5">
-                              <div class='radio mx-auto' data-value="master"> <img class="fit-image" src="https://i.imgur.com/WIAP9Ku.jpg" width="105px" height="55px"> </div>
-                          </div>
-                          <div class="col-sm-3 col-5">
-                              <div class='radio mx-auto' data-value="paypal"> <img class="fit-image" src="https://i.imgur.com/cMk1MtK.jpg" width="105px" height="55px"> </div>
-                          </div> <br>
-                      </div>
-                      <div class="row justify-content-center form-group">
-                          <div class="col-12 px-auto">
-                              <div class="custom-control custom-radio custom-control-inline"> <input id="customRadioInline1" type="radio" name="customRadioInline1" class="custom-control-input" checked="true"> <label for="customRadioInline1" class="custom-control-label label-radio">Private</label> </div>
-                              <div class="custom-control custom-radio custom-control-inline"> <input id="customRadioInline2" type="radio" name="customRadioInline1" class="custom-control-input"> <label for="customRadioInline2" class="custom-control-label label-radio">Business</label> </div>
-                          </div>
-                      </div>
-                      <div class="row justify-content-center">
-                          <div class="col-12">
-                              <div class="input-group"> <input type="text" name="Name" placeholder="John Doe"> <label>Name</label> </div>
-                          </div>
-                      </div>
-                      <div class="row justify-content-center">
-                          <div class="col-12">
-                              <div class="input-group"> <input type="text" id="cr_no" name="card-no" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19"> <label>Card Number</label> </div>
-                          </div>
-                      </div>
-                      <div class="row justify-content-center">
-                          <div class="col-12">
-                              <div class="row">
-                                  <div class="col-6">
-                                      <div class="input-group"> <input type="text" id="exp" name="expdate" placeholder="MM/YY" minlength="5" maxlength="5"> <label>Expiry Date</label> </div>
-                                  </div>
-                                  <div class="col-6">
-                                      <div class="input-group"> <input type="password" name="cvv" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="3"> <label>CVV</label> </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="row justify-content-center">
-                           <div class="col-md-12"> 
-                           <input type="submit" value="Pay {{getDailyPrice() |vatAdded:18 | currency}}" class="btn btn-pay placeicon">
 
-                           </div> 
+                 
+                  
+                  <div class="mb-3">
+                      <label for="creditCardNumber">Card Number</label>
+                      <div class="form-group">
+                          <input type="number" id="creditCardNumber" formControlName="creditCardNumber" class="form-control" placeholder="Credit Card Number" minlength="16" maxlength="16"/>
                       </div>
-                  </form>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="expirationDate">Expiration Date</label>
+                    <div class="form-group">
+                        <input type="text" id="expirationDate" formControlName="expirationDate" class="form-control" placeholder="MM/YY" minlength="4" maxlength="5"/>
+                    </div>
+                </div>
+                <div class="mb-3">
+                  <label for="securityCode">CVV</label>
+                  <div class="form-group">
+                      <input type="text" id="securityCode" formControlName="securityCode" class="form-control" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="3"/>
+                  </div>
               </div>
+                  
+                 
+                 
+                 
+                  
+              </form>
+          </div>
+          <div class="card-footer">
+            <button
+            (click)="paymentForRent()"
+            class="btn btn-pay placeicon"
+            style="margin-left: 375px; width: fit-content; height: fit-content;"
+          >
+            Pay {{ totalPrice | vatAdded: 18 | currency }}  
+          </button>
           </div>
       </div>
+
   </div>
+
+</div>
+

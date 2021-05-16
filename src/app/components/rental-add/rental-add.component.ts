@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { Customer } from 'src/app/models/customer';
@@ -26,7 +27,7 @@ export class RentalAddComponent implements OnInit {
   @Input() car : Car;
   rentals:RentalNormal[]=[];
   cars:Car[]=[];
-  carAvailable:boolean;
+  carAvailable:boolean = true;
   rentDate:Date;
   returnDate:Date;
   message:string
@@ -43,6 +44,7 @@ export class RentalAddComponent implements OnInit {
   firstDateSelected: boolean = false;
   carIdForStorage :string;
   totalPrice:string;
+  returnDateTime:Date
 
 
   
@@ -72,15 +74,20 @@ export class RentalAddComponent implements OnInit {
   }
   getRentals(){
     this.rentalService.getNormalRentals().subscribe((response)=>{
-      this.rentals=response.data   
-       
-      this.rentals.forEach(rental => {
-        if(rental.carId==this.car.carId && rental.returnDate ==null){
-                return this.carAvailable = false;
-        }else{
-          return this.carAvailable = true;
-        }
-      });
+      this.rentals=response.data  
+      var result = this.rentals.filter(i => i.carId == this.car.carId 
+        && Date.now() <= new Date(i.returnDate).getTime()) 
+        console.log(result)
+          if(result.length>0)
+            {
+             this.carAvailable =false
+            }
+            else{
+              this.carAvailable =true
+
+            }
+
+     
 
 
     })
@@ -115,19 +122,7 @@ export class RentalAddComponent implements OnInit {
     }
   }
 
-    createNewRental(){
-    let rentalNormalAdd:RentalNormal={
-      userId : this.user.id ,
-      carId:this.car.carId,
-      customerId: this.customer.id,
-      rentDate:this.rentDate,
-      returnDate:this.returnDate
-    }
-    this.rentalNormal = rentalNormalAdd;
-    console.log(this.rentalNormal)
-    // this.paymentService.rentals =rental;
-   }
-
+   
    changeState(e:any){
      console.log(e)
      this.state = e
@@ -196,12 +191,11 @@ minDateChange(date: any) {
       this.cartService.addToCart(car);
        this.carIdForStorage = car.carId.toString()
       this.localStorageService.add("carIdCart",this.carIdForStorage)
-      this.router.navigate(['cars/payment'])
-
-      return;
-    
-    
+      this.router.navigate(['cars/payment'])   
+     
+     
   }
+
 
 
 }

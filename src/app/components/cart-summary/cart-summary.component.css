@@ -1,5 +1,5 @@
 #cont{
-    margin-top:-45px;
+    margin-top:-40px;
 
 }
 .container-fluid {
@@ -93,7 +93,7 @@ input:focus+label {
 }
 
 .btn-pay:hover {
-    background-color: #22d84d
+    background-color: #d88322
 }
 
 .fit-image {
@@ -131,4 +131,7 @@ img {
 .label-radio {
     font-weight: bold;
     color: #000000
+}
+#cont{
+    margin-top: 20px;
 }

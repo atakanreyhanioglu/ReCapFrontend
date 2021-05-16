@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header"><h5 class="title font-weight-bold">Edit Profile</h5></div>
+
+    <div class="card-body">
+        <form [formGroup]="userUpdateForm">
+            <div class="row">
+                <div class="mb-3">
+                    <label for="colorName">First Name</label>
+                    <div class="form-group">
+                        <input type="text" id="firstName" class="form-control" formControlName="firstName" placeholder="First Name" />
+
+                    </div> 
+                </div>
+                <div class="mb-3">
+                    <label for="colorName">Last Name</label>
+                    <div class="form-group">
+                        <input type="text" id="lastName" class="form-control" formControlName="lastName" placeholder="Last Name" />
+
+                    </div> 
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-fill btn-success" (click)="update()" style="float: right;">Update</button>
+    </div>
+</div>
+       

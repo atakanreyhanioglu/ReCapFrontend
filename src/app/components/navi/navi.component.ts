@@ -30,13 +30,14 @@ export class NaviComponent implements OnInit {
     this.checkIfLogin();
     this.getUsers();
     this.checkCart();
+    
    
     
   }
   checkCart(){
-     this.carId =  parseInt(this.localStorageService.get('carIdCart'))
-        console.log(this.carId)
-        if(this.carId!=null){
+     
+        
+        if(this.localStorageService.get('carIdCart')){
           return this.checkIfCartFull=true;
            ;
         }else{
@@ -83,6 +84,8 @@ export class NaviComponent implements OnInit {
   logout(){
     this.localStorageService.delete("token");
     this.localStorageService.delete("email");
+    this.localStorageService.delete("totalPrice");
+    this.localStorageService.delete("carIdCart");
     this.toastrService.success("Logout Successful.","See you next time !")
     window.location.reload();
     }

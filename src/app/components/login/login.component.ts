@@ -45,7 +45,8 @@ export class LoginComponent implements OnInit {
         this.toastrService.success(response.message,"Login Successful!")
         this.localStorageService.add("token",response.data.token)
         this.localStorageService.add("email",this.loginForm.value.email)
-        window.location.reload();
+        this.router.navigate([""])
+        this.reflesh();
         
        
       },responseError=>{
@@ -54,6 +55,9 @@ export class LoginComponent implements OnInit {
        
       })
     }
+  }
+  reflesh(){
+    window.location.reload()
   }
  
 

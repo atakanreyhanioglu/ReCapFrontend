@@ -16,12 +16,16 @@ import { ColorDeleteComponent } from './components/color-delete/color-delete.com
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileUpdateComponent } from './components/profile-update/profile-update.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlreadyLoginGuard } from './guards/already-login.guard';
+import { CartGuardGuard } from './guards/cart-guard.guard';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [{path:"",pathMatch:"full",component:CarComponent},
 
+
+{path:"users/update",component:ProfileUpdateComponent},
 
 {path:"cars",component:CarComponent},
 {path:"cars/brand/:brandId",component:CarComponent},
@@ -29,22 +33,22 @@ const routes: Routes = [{path:"",pathMatch:"full",component:CarComponent},
 {path:"cars/cardetail/:carId",component:CarDetailComponent},
 {path:"cars/car/:carId",component : CarComponent},
 {path:"cars/brand/:brandId/color/:colorId",component: CarComponent},
-{path:"cars/payment", component : CartSummaryComponent},
+{path:"cars/payment", component : CartSummaryComponent,canActivate:[LoginGuard,CartGuardGuard]},
 
-{path:"colors/list", component:ColorListComponent},
-{path:"colors/list/add", component:ColorAddComponent},
-{path:"colors/list/update/:colorId", component:ColorUpdateComponent},
-{path:"colors/list/delete/:colorId", component:ColorDeleteComponent},
+{path:"colors/list", component:ColorListComponent,canActivate:[LoginGuard]},
+{path:"colors/list/add", component:ColorAddComponent,canActivate:[LoginGuard]},
+{path:"colors/list/update/:colorId", component:ColorUpdateComponent,canActivate:[LoginGuard]},
+{path:"colors/list/delete/:colorId", component:ColorDeleteComponent,canActivate:[LoginGuard]},
 
-{path:"brands/list", component:BrandListComponent},
-{path:"brands/list/add", component:BrandAddComponent},
-{path:"brands/list/update/:brandId", component:BrandUpdateComponent},
-{path:"brands/list/delete/:brandId", component:BrandDeleteComponent},
+{path:"brands/list", component:BrandListComponent,canActivate:[LoginGuard]},
+{path:"brands/list/add", component:BrandAddComponent,canActivate:[LoginGuard]},
+{path:"brands/list/update/:brandId", component:BrandUpdateComponent,canActivate:[LoginGuard]},
+{path:"brands/list/delete/:brandId", component:BrandDeleteComponent,canActivate:[LoginGuard]},
 
-{path:"cars/list", component:CarListComponent},
+{path:"cars/list", component:CarListComponent,canActivate:[LoginGuard]},
 {path:"cars/list/add", component:CarAddComponent, canActivate:[LoginGuard]},
-{path:"cars/list/update/:carId", component:CarUpdateComponent},
-{path:"cars/list/delete/:carId", component:CarDeleteComponent},
+{path:"cars/list/update/:carId", component:CarUpdateComponent,canActivate:[LoginGuard]},
+{path:"cars/list/delete/:carId", component:CarDeleteComponent,canActivate:[LoginGuard]},
 
 {path:"login", component:LoginComponent,canActivate:[AlreadyLoginGuard]},
 {path:"register", component:RegisterComponent}

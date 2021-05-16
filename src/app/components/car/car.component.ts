@@ -68,7 +68,6 @@ export class CarComponent implements OnInit {
   getRentals(){
     this.rentalService.getRentals().subscribe((response) => {
       this.rentals=response.data;
-      console.log(this.rentals)
     })
   }
   getAllBrands() {

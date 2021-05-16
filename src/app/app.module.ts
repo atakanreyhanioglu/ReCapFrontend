@@ -40,6 +40,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
+import { ProfileUpdateComponent } from './components/profile-update/profile-update.component';
 
 
 
@@ -75,6 +76,7 @@ import { RentalAddComponent } from './components/rental-add/rental-add.component
     LoginComponent,
     RegisterComponent,
     RentalAddComponent,
+    ProfileUpdateComponent,
  
     
     
