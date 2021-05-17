@@ -41,6 +41,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
 import { ProfileUpdateComponent } from './components/profile-update/profile-update.component';
+import { RentalListComponent } from './components/rental-list/rental-list.component';
+import { RentalDeleteComponent } from './components/rental-delete/rental-delete.component';
 
 
 
@@ -77,6 +79,8 @@ import { ProfileUpdateComponent } from './components/profile-update/profile-upda
     RegisterComponent,
     RentalAddComponent,
     ProfileUpdateComponent,
+    RentalListComponent,
+    RentalDeleteComponent,
  
     
     

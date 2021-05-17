@@ -71,19 +71,20 @@ export class RentalAddComponent implements OnInit {
   getRentals(){
     this.rentalService.getNormalRentals().subscribe((response)=>{
       this.rentals=response.data  
-      var result = this.rentals.filter(i => i.carId == this.car.carId 
-        && Date.now() <= new Date(i.returnDate).getTime()) 
+      var result = this.rentals.filter(i => i.carId == this.car.carId) 
+        result.forEach(element => {
+         
+              if(
+                new Date(element.returnDate).valueOf() > new Date().valueOf()){
+                 this.carAvailable =false
+
+              }else{
+                this.carAvailable =true
+              }
         
-          if(result.length>0)
-            {
-             this.carAvailable =false
-            }
-            else{
-              this.carAvailable =true
-
-            }
-
-     
+        });
+   
+            
 
 
     })

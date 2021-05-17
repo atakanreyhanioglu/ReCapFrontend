@@ -1,0 +1,29 @@
+<table class="table table-striped">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">Customer</th>
+            <th scope="col">CarId</th>
+            <th scope="col">Car Name</th>   
+            <th scope="col">Rent Date</th>        
+            <th scope="col">Return Date</th>
+             
+            
+            <!-- <th scope="col"><button class="btn btn-success" click="routerLink" routerLink="add"
+                style="width: 160px;" >AddCar</button></th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rental of rentals">
+            <th scope="row">{{rental.customerName | uppercase}} {{rental.customerLastName | uppercase}}</th>
+            <td>{{rental.carId}}</td>
+            <td>{{rental.carName}}</td>
+            <td>{{rental.rentDate | date:'shortDate'}}</td>
+            <td>{{rental.returnDate | date:'shortDate'}}</td>
+
+            <td>
+                <button class="btn btn-danger" click="routerLink" routerLink="delete/{{rental.carId}}" style="margin-left:12px ;" >Delete</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

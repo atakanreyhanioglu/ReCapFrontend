@@ -16,7 +16,7 @@ export class PaymentService {
 
 
   getPayments():Observable<ListResponseModel<Payment>>{
-    let newPath = this.apiUrl + "getalldetails";
+    let newPath = this.apiUrl + "getall";
     return this.httpClient.get<ListResponseModel<Payment>>(newPath);
 
   }

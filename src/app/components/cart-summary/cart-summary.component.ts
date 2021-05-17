@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CartItem } from 'src/app/models/cartItem';
+import { Payment } from 'src/app/models/payment';
+import { ResponseModel } from 'src/app/models/responseModel';
 import { User } from 'src/app/models/user';
 import { CarService } from 'src/app/services/car.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -28,6 +30,7 @@ export class CartSummaryComponent implements OnInit {
   users:User[];
   user:User;
   checkIfUserFindexPoint :boolean=true;
+  cards:Payment[]
   
   constructor(private cartService:CartService,private formBuilder:FormBuilder,
     private toastrService:ToastrService,private userService:UserService,
@@ -40,8 +43,17 @@ export class CartSummaryComponent implements OnInit {
     this.getDailyPrice();
     this.getCar();
     this.createPaymentAddForm();
+    this.getCards();
    
 
+  }
+  getCards(){
+    this.paymentService.getPayments().subscribe((response)=>{
+      
+       this.cards = response.data.filter(p=>p.userId==parseInt(this.localStorageService.get("userId")))
+      console.log(this.cards)
+     
+    })
   }
   getCar(){
 
@@ -81,7 +93,16 @@ export class CartSummaryComponent implements OnInit {
       this.users.forEach(user => {
         if(user.email==this.localStorageService.get('email') && this.checkIfUserFindexPoint ){
             this.user=user; 
-            this.addCardForUser(user)  
+            if(this.cards.length>0){
+              //kart sistemde kayıtlı ise işlemleri buraya yaz
+
+              return;
+            }else{
+              
+              this.addCardForUser(user)  
+
+            }
+            
 
         }
       });
@@ -100,7 +121,6 @@ export class CartSummaryComponent implements OnInit {
 
  
   addCardForUser(user:User){
-
     if(this.paymentAddForm.valid){
       let cardModel = Object.assign({},this.paymentAddForm.value)
         cardModel.userId = user.id

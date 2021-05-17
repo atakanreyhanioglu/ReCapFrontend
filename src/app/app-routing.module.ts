@@ -18,15 +18,17 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
 import { LoginComponent } from './components/login/login.component';
 import { ProfileUpdateComponent } from './components/profile-update/profile-update.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RentalDeleteComponent } from './components/rental-delete/rental-delete.component';
+import { RentalListComponent } from './components/rental-list/rental-list.component';
 import { AlreadyLoginGuard } from './guards/already-login.guard';
 import { CartGuardGuard } from './guards/cart-guard.guard';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [{path:"",pathMatch:"full",component:CarComponent},
 
-
+{path:"rentals/list/delete/:carId", component:RentalDeleteComponent,canActivate:[LoginGuard]},
+{path:"rentals/list", component:RentalListComponent,canActivate:[LoginGuard]},
 {path:"users/update",component:ProfileUpdateComponent},
-
 {path:"cars",component:CarComponent},
 {path:"cars/brand/:brandId",component:CarComponent},
 {path:"cars/color/:colorId",component:CarComponent},
