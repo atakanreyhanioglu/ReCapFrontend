@@ -33,18 +33,17 @@ export class RentalAddComponent implements OnInit {
   message:string
   minDate?: string = '';
   maxDate?: string = '';
-  rentalNormal :RentalNormal;
   user:User;
   users:User[];
   customers:Customer[];
   customer:Customer;
-  userFirstName:string;
-  userLastName:string;
+
   totalAmountCar:number
   firstDateSelected: boolean = false;
   carIdForStorage :string;
   totalPrice:string;
   returnDateTime:Date
+  customerId:number
 
 
   
@@ -66,18 +65,15 @@ export class RentalAddComponent implements OnInit {
       new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
       'yyyy-MM-dd'
     );
-    if(this.localStorageService.get('token')){
-      
-
-      
-    }
+    this.getUsers();
+    
   }
   getRentals(){
     this.rentalService.getNormalRentals().subscribe((response)=>{
       this.rentals=response.data  
       var result = this.rentals.filter(i => i.carId == this.car.carId 
         && Date.now() <= new Date(i.returnDate).getTime()) 
-        console.log(result)
+        
           if(result.length>0)
             {
              this.carAvailable =false
@@ -95,6 +91,7 @@ export class RentalAddComponent implements OnInit {
   buttonAvailable(){
     if(this.carAvailable){
       return 'btn btn-success'
+
     }else{
       return 'btn btn-dark disabled'
     }
@@ -105,11 +102,17 @@ export class RentalAddComponent implements OnInit {
   }
   
   open(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    if(this.isAuthenticated()){
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+
+    }else{
+      this.toastrService.info("Please Login!")
+    }
+    
   }
   
   private getDismissReason(reason: any): string {
@@ -133,40 +136,26 @@ export class RentalAddComponent implements OnInit {
    }
    getUsers(){
    
-    this.userService.getUsers().subscribe(response => {
-      this.users = response.data
-      this.whoIsLogin();
+    this.authService.getUsers()
+    this.getCustomers()
       
-    })
-  
-}
-getCustomers(){
-  this.customerService.getCustomers().subscribe(response=>{
-    this.customers = response.data
-    this.whoIsCustomer();
-  })
-}
-whoIsCustomer(){
-  this.customers.forEach(customer => {
-    if(customer.userId==this.user.id){
-      this.customer=customer;
     }
-  })
-}
-whoIsLogin(){
-  this.users.forEach(user => {
-    if(user.email===this.localStorageService.get("email")){
-      this.user=user;
-      this.userFirstName=user.firstName
-      this.userLastName=user.lastName
+    getCustomers(){
+      this.customerService.getCustomers().subscribe((response)=>{
+          this.customers=response.data
+          this.customers.forEach(customer => {
+            this.customer=customer
+            
+          });
 
-     return;
-      
-     
+
+      })
     }
-    return ;
-  });
-}
+  
+
+
+
+
 minDateChange(date: any) {
   this.minDate = date.target.value;
   this.maxDate = this.datePipe.transform(
@@ -184,14 +173,30 @@ minDateChange(date: any) {
     this.totalAmountCar = price * this.car.dailyPrice;
     this.totalPrice = (this.totalAmountCar).toString();
     this.localStorageService.add("totalPrice",this.totalPrice)
+   
+    this.localStorageService.add("customerId",this.customer.id.toString())
+    this.localStorageService.add("returnDate",this.returnDate.toString())
+    this.localStorageService.add("rentDate",this.rentDate.toString())
+    this.localStorageService.add("carId",this.car.carId.toString())
+
+
+
+   
+
   }
   addToCart(car: Car) {
+      if( this.firstDateSelected=true){
+        this.toastrService.success('Added to cart', car.carName);
+        this.cartService.addToCart(car);
+         this.carIdForStorage = car.carId.toString()
+        this.localStorageService.add("carIdCart",this.carIdForStorage)
+        this.router.navigate(['cars/payment'])   
+      }
+      else{
+        this.toastrService.info('Chooase a date..');
 
-      this.toastrService.success('Added to cart', car.carName);
-      this.cartService.addToCart(car);
-       this.carIdForStorage = car.carId.toString()
-      this.localStorageService.add("carIdCart",this.carIdForStorage)
-      this.router.navigate(['cars/payment'])   
+      }
+     
      
      
   }

@@ -86,6 +86,11 @@ export class NaviComponent implements OnInit {
     this.localStorageService.delete("email");
     this.localStorageService.delete("totalPrice");
     this.localStorageService.delete("carIdCart");
+    this.localStorageService.delete("userId")
+    this.localStorageService.delete("customerId")
+    this.localStorageService.delete("returnDate")
+    this.localStorageService.delete("rentDate")
+    this.localStorageService.delete("carId")
     this.toastrService.success("Logout Successful.","See you next time !")
     window.location.reload();
     }

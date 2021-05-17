@@ -29,5 +29,6 @@ export class PaymentService {
   delete(payment:Payment):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl+"delete", payment)
   }
+ 
 
 }

@@ -44,7 +44,7 @@ export class AuthService {
 whoIsLogin(){
   this.users.forEach(user => {
     if(user.email===this.localStorageService.get("email")){
-       this.userId=user.id;
+      this.localStorageService.add("userId",user.id.toString())
      return;
       
      
