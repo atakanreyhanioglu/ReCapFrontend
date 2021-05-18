@@ -1,0 +1,45 @@
+<table class="table ">
+  <thead class="table-light">
+      <tr>
+          <th scope="col">ID</th> 
+          <th scope="col">Name</th>  
+           
+          
+          <th>Browse Image</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngIf="car">
+          <th scope="row">{{car.carId}}</th>
+          <td >{{car.carName}}</td>
+         
+         
+       
+        <td ><div class="col-3" >
+          <div class="mb-3" >
+          
+          <input
+          type="file"
+          class="custom-file-input"
+          id="imageFile"
+          (change)="fileSelected($event)"
+          accept=".png,.jpg,.jpeg"          
+        />
+        <label style="width: 400px;" class="custom-file-label" for="imageFile">Select file</label>
+      </div>
+    </div>
+
+
+        </td >
+          <td style="width: 120px; ">
+            <button  style="width: 130px; margin-right: 8px;"class="btn btn-info" (click)="add()"><b>Add Image</b></button>
+          </td>
+
+      </tr>
+  </tbody>
+
+</table>
+
+  
+  

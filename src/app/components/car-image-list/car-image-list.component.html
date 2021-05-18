@@ -1,0 +1,31 @@
+<table class="table ">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">ID</th> 
+            <th scope="col">Name</th>  
+            <th>Car Image</th>       
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of cars">
+            <th scope="row">{{car.carId}}</th>
+            <td >{{car.carName}}</td>
+            <td style="width: 160px; height:160px;"><img id="btn" *ngIf="car.carImage" 
+            [src]="defaultPath+car.carImage" class="card-img-top"
+            style="object-fit: cover;" height="%50" alt="...">
+            
+            <img *ngIf="!car.carImage" id="btn" [src]="defaultPath+'/images/logo.jpg'" class="card-img-top"
+          style="object-fit: cover;"  height="%50" alt="..."></td>
+
+           
+         
+          
+            <td style="width: 160px; ">
+                <button  id="btn2"class="btn btn-outline-info" click="routerLink"routerLink="add/{{ car.carId }}" style="width:min-content" ><b>Add Image</b></button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

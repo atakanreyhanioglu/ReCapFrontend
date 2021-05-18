@@ -7,6 +7,8 @@ import { BrandUpdateComponent } from './components/brand-update/brand-update.com
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarDeleteComponent } from './components/car-delete/car-delete.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { CarImageAddComponent } from './components/car-image-add/car-image-add.component';
+import { CarImageListComponent } from './components/car-image-list/car-image-list.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { CarComponent } from './components/car/car.component';
@@ -28,6 +30,11 @@ const routes: Routes = [{path:"",pathMatch:"full",component:CarComponent},
 
 {path:"rentals/list/delete/:carId", component:RentalDeleteComponent,canActivate:[LoginGuard]},
 {path:"rentals/list", component:RentalListComponent,canActivate:[LoginGuard]},
+
+{path:"carimages/list", component:CarImageListComponent,canActivate:[LoginGuard]},
+{path:"carimages/list/add/:carId", component:CarImageAddComponent,canActivate:[LoginGuard]},
+
+
 {path:"users/update",component:ProfileUpdateComponent},
 {path:"cars",component:CarComponent},
 {path:"cars/brand/:brandId",component:CarComponent},

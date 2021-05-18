@@ -43,6 +43,8 @@ import { RentalAddComponent } from './components/rental-add/rental-add.component
 import { ProfileUpdateComponent } from './components/profile-update/profile-update.component';
 import { RentalListComponent } from './components/rental-list/rental-list.component';
 import { RentalDeleteComponent } from './components/rental-delete/rental-delete.component';
+import { CarImageListComponent } from './components/car-image-list/car-image-list.component';
+import { CarImageAddComponent } from './components/car-image-add/car-image-add.component';
 
 
 
@@ -81,6 +83,8 @@ import { RentalDeleteComponent } from './components/rental-delete/rental-delete.
     ProfileUpdateComponent,
     RentalListComponent,
     RentalDeleteComponent,
+    CarImageListComponent,
+    CarImageAddComponent,
  
     
     

@@ -51,7 +51,6 @@ export class CartSummaryComponent implements OnInit {
     this.paymentService.getPayments().subscribe((response)=>{
       
        this.cards = response.data.filter(p=>p.userId==parseInt(this.localStorageService.get("userId")))
-      console.log(this.cards)
      
     })
   }
