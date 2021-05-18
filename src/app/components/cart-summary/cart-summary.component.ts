@@ -94,6 +94,7 @@ export class CartSummaryComponent implements OnInit {
             this.user=user; 
             if(this.cards.length>0){
               //kart sistemde kayıtlı ise işlemleri buraya yaz
+              this.addCardForUser(user)  
 
               return;
             }else{

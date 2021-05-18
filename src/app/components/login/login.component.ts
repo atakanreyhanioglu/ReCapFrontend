@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
        
       },responseError=>{
        // console.log(responseError)
-       this.toastrService.error(responseError.error,"Please Register!");
+       this.toastrService.error(responseError.error);
        
       })
     }
